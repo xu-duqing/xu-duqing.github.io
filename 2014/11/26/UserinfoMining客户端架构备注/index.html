@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015 | 大光的博客</title>
+  <title>UserinfoMining客户端架构备注 | 大光的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="大光的博客">
-<meta property="og:url" content="http://daguang.me/archives/2015/index.html">
+  <meta name="description" content="关于用户信息挖掘项目Android客户端的相关备注及规范">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UserinfoMining客户端架构备注">
+<meta property="og:url" content="http://daguang.me/2014/11/26/UserinfoMining客户端架构备注/index.html">
 <meta property="og:site_name" content="大光的博客">
-<meta property="og:description">
+<meta property="og:description" content="关于用户信息挖掘项目Android客户端的相关备注及规范">
+<meta property="og:updated_time" content="2014-11-28T06:48:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大光的博客">
-<meta name="twitter:description">
+<meta name="twitter:title" content="UserinfoMining客户端架构备注">
+<meta name="twitter:description" content="关于用户信息挖掘项目Android客户端的相关备注及规范">
   
     <link rel="alternative" href="/atom.xml" title="大光的博客" type="application/atom+xml">
   
@@ -161,47 +162,127 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-UserinfoMining客户端架构备注" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/06/17/hello-world/" class="archive-article-date">
-  	<time datetime="2015-06-16T16:43:39.000Z" itemprop="datePublished">Jun 17</time>
+    <div class="article-meta">
+      <a href="/2014/11/26/UserinfoMining客户端架构备注/" class="article-date">
+  	<time datetime="2014-11-26T06:27:23.000Z" itemprop="datePublished">2014-11-26</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/06/17/hello-world/">Hello World</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      UserinfoMining客户端架构备注
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
 
-        </div>
+        
+
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关于用户信息挖掘项目Android客户端的相关备注及规范<br><a id="more"></a></p>
+<h3 id="严格遵循Material_Design。">严格遵循Material Design。</h3><blockquote>
+<p>Material Design。<br>Google 在2014的I/O大会上发布的新一代设计规范，目的是提供更一致、更广泛的“外观和感觉”。使用这一规范能够使得设计更加的简单和统一。<br>具体的可以参见 <a href="http://design.1sters.com/" target="_blank" rel="external">Material Design 中文版</a></p>
+</blockquote>
+<h3 id="使用Androidannotations进行View层开发">使用Androidannotations进行View层开发</h3><blockquote>
+<p>Androidannotations是视图的代码注入框架，能够减少View开发中重复代码，提升效率。<br>使用起来相对简单，具体可参加 <a href="http://blog.csdn.net/zjbpku/article/details/18676149" target="_blank" rel="external">博客</a></p>
+</blockquote>
+<h3 id="使用ActiveAndroid进行数据层开发">使用ActiveAndroid进行数据层开发</h3><blockquote>
+<p>用过最方便的ORM框架，项目中已经引用了。也写了demo。<br>具体的使用方法参见 <a href="http://xu-duqing.github.io//2014/11/26/ActiveAndroid/" target="_blank" rel="external">ActiveAndroid</a></p>
+</blockquote>
+<h3 id="使用volley进行网络框架开发">使用volley进行网络框架开发</h3><blockquote>
+<p>还不了解，具体有待实现</p>
+</blockquote>
+<h3 id="使用JSON做数据交互">使用JSON做数据交互</h3><blockquote>
+<p>相比较而言msgPack更具有优势， 但是有一定学习曲线，还是JSON简单明了。加上Google出品的GSON。使用起来还是很方便的。<br>等数据传输出现瓶颈的时候在考虑MsgPack吧</p>
+</blockquote>
+
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/11/26/ActiveAndroid/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          android ORM 框架ActiveAndroid介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/08/01/arcgis-for-android-本地缓存/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">arcgis for android 本地缓存</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="UserinfoMining客户端架构备注" data-title="UserinfoMining客户端架构备注" data-url="http://daguang.me/2014/11/26/UserinfoMining客户端架构备注/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 </div>
       <footer id="footer">
   <div class="outer">
@@ -226,8 +307,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

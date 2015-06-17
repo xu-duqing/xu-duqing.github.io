@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | 大光的博客</title>
+  <title>android ORM 框架ActiveAndroid介绍 | 大光的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="最近在做新项目的时候用到的ActiveAndroid。简单介绍一下使用方法，不做深入理解算是一个入门文档吧。ORM框架也用过一些，这个是用起来最简单的，具体的效率数据量太小看不出来。不过这个多人在用应该也不会有大的影响吧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://daguang.me/2015/06/17/hello-world/index.html">
+<meta property="og:title" content="android ORM 框架ActiveAndroid介绍">
+<meta property="og:url" content="http://daguang.me/2014/11/26/ActiveAndroid/index.html">
 <meta property="og:site_name" content="大光的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2015-06-16T16:43:39.000Z">
+<meta property="og:description" content="最近在做新项目的时候用到的ActiveAndroid。简单介绍一下使用方法，不做深入理解算是一个入门文档吧。ORM框架也用过一些，这个是用起来最简单的，具体的效率数据量太小看不出来。不过这个多人在用应该也不会有大的影响吧">
+<meta property="og:updated_time" content="2014-11-26T08:44:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="android ORM 框架ActiveAndroid介绍">
+<meta name="twitter:description" content="最近在做新项目的时候用到的ActiveAndroid。简单介绍一下使用方法，不做深入理解算是一个入门文档吧。ORM框架也用过一些，这个是用起来最简单的，具体的效率数据量太小看不出来。不过这个多人在用应该也不会有大的影响吧">
   
     <link rel="alternative" href="/atom.xml" title="大光的博客" type="application/atom+xml">
   
@@ -165,11 +162,11 @@ Quick">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ActiveAndroid" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/06/17/hello-world/" class="article-date">
-  	<time datetime="2015-06-16T16:43:39.000Z" itemprop="datePublished">2015-06-17</time>
+      <a href="/2014/11/26/ActiveAndroid/" class="article-date">
+  	<time datetime="2014-11-26T08:02:00.000Z" itemprop="datePublished">2014-11-26</time>
 </a>
     </div>
   
@@ -182,7 +179,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      android ORM 框架ActiveAndroid介绍
     </h1>
   
 
@@ -190,6 +187,10 @@ Quick">
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM-Android/">-ORM -Android</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -198,16 +199,59 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>最近在做新项目的时候用到的ActiveAndroid。简单介绍一下使用方法，不做深入理解算是一个入门文档吧。<br>ORM框架也用过一些，这个是用起来最简单的，具体的效率数据量太小看不出来。不过这个多人在用应该也不会有大的影响吧<br><a id="more"></a></p>
+<h3 id="第一步">第一步</h3><p>在AndroidManifest.xml中添加两个配置</p>
+<blockquote>
+<p><code>&lt;meta-data android:name=&quot;AA_DB_NAME&quot; android:value=&quot;mydata.db&quot;/\&gt;</code><br>数据库名<br><code>&lt;meta-data android:name=&quot;AA_DB_VERSION&quot; android:value=&quot;1&quot;/\&gt;</code><br>数据库版本号，用于数据升级</p>
+</blockquote>
+<h3 id="第二步">第二步</h3><p>继承<code>com.activeandroid.app.Application</code></p>
+<!--java-->
+<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Application</span> {</span>
+}
 
+&lt;application android:name=<span class="string">".app.UimApplication"</span> ...
+</code></pre><p>如果无法继承<code>com.activeandroid.app.Application</code>也可以</p>
+<!--java-->
+<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">SomeLibraryApplication</span> {</span>
+    <span class="annotation">@Override</span>
+    public void onCreate() {
+        <span class="keyword">super</span>.onCreate();
+        <span class="type">ActiveAndroid</span>.initialize(<span class="keyword">this</span>);
+    }
+    <span class="annotation">@Override</span>
+    public void onTerminate() {
+        <span class="keyword">super</span>.onTerminate();
+        <span class="type">ActiveAndroid</span>.dispose();
+    }
+}
+</code></pre><h3 id="第三步">第三步</h3><p>创建表<br><!--java--></p>
+<pre><code><span class="annotation">@Table</span>(name = <span class="string">"Userinfo"</span>)
+public <span class="class"><span class="keyword">class</span> <span class="title">Userinfo</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Model</span> {</span>
+    <span class="annotation">@Column</span>(name = <span class="string">"Name"</span>)
+    public <span class="type">String</span> name;
+
+    <span class="annotation">@Column</span>(name = <span class="string">"passWord"</span>)
+    public <span class="type">String</span> passWord;
+}
+</code></pre><h3 id="OK_现在开始就可以对数据进行增删改查了">OK 现在开始就可以对数据进行增删改查了</h3><p>增：<br><!--java--></p>
+<pre><code>Userinfo <span class="variable">userinfo =</span> new Userinfo();
+userinfo.<span class="variable">name =</span> <span class="string">"sam Xu"</span>;
+userinfo.<span class="variable">passWord=</span><span class="string">"123456"</span>;
+userinfo.save();
+</code></pre><p>删：<br><!--java--></p>
+<pre><code>Userinfo userinfo = Userinfo.load(Userinfo.<span class="keyword">class</span>, <span class="number">1</span>);
+userinfo.<span class="keyword">delete</span>();
+
+Userinfo.<span class="keyword">delete</span>(Userinfo.<span class="keyword">class</span>, <span class="number">1</span>);
+
+<span class="keyword">new</span> <span class="keyword">Delete</span>().<span class="keyword">from</span>(Userinfo.<span class="keyword">class</span>).Where(<span class="string">"name = ?"</span>,<span class="string">"samxu"</span>).execute();
+</code></pre><p>改：<br><!--java--></p>
+<pre><code>Userinfo <span class="keyword">info</span> = Userinfo.<span class="keyword">load</span>(Userinfo.class,<span class="number">1</span>);
+<span class="keyword">info</span>.name = <span class="string">"samxu"</span>;
+<span class="keyword">info</span>.save();
+</code></pre><p>查：<br><!--java--></p>
+<pre><code><span class="keyword">new</span> <span class="keyword">Select</span>().<span class="keyword">from</span>(Userinfo.<span class="keyword">class</span>).<span class="keyword">Where</span>(<span class="string">"name = ?"</span>,<span class="string">"samxu"</span>).executeSingle();
+</code></pre><h3 id="更多语句自己去查接口吧！">更多语句自己去查接口吧！</h3>
       
     </div>
     
@@ -216,9 +260,18 @@ Quick">
     
 <nav id="article-nav">
   
+    <a href="/2014/12/11/Android 开源框架：AndroidAnnotations/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          android开源框架 annotations配置
+        
+      </div>
+    </a>
   
-    <a href="/2014/12/11/Android 开源框架：AndroidAnnotations/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">android开源框架 annotations配置</div>
+  
+    <a href="/2014/11/26/UserinfoMining客户端架构备注/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">UserinfoMining客户端架构备注</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -247,7 +300,7 @@ Quick">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://daguang.me/2015/06/17/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="ActiveAndroid" data-title="android ORM 框架ActiveAndroid介绍" data-url="http://daguang.me/2014/11/26/ActiveAndroid/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
