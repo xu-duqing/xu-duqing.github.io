@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Android ORM库ActiveAndroid介绍 | 大光的博客</title>
+  <title>android-data-binding-技术介绍-0 | 大光的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Github https://github.com/pardom/ActiveAndroid  官网 http://www.activeandroid.com/">
+  <meta name="description" content="Data binding (双向绑定)是Google在今年的IO大会上推出的一套数据绑定框架，其目的是为了使Android的开发支持上MVVM框架，减少代码耦合。使Android开发更加的易于维护，易于测试。首先简单的带大家了解下MVVM是什么。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android ORM库ActiveAndroid介绍">
-<meta property="og:url" content="http://daguang.me/2015/03/27/Android ORM库ActiveAndroid介绍/index.html">
+<meta property="og:title" content="android-data-binding-技术介绍-0">
+<meta property="og:url" content="http://daguang.me/2015/08/01/android-data-binding-技术介绍-0/index.html">
 <meta property="og:site_name" content="大光的博客">
-<meta property="og:description" content="Github https://github.com/pardom/ActiveAndroid  官网 http://www.activeandroid.com/">
-<meta property="og:updated_time" content="2015-06-18T02:12:26.000Z">
+<meta property="og:description" content="Data binding (双向绑定)是Google在今年的IO大会上推出的一套数据绑定框架，其目的是为了使Android的开发支持上MVVM框架，减少代码耦合。使Android开发更加的易于维护，易于测试。首先简单的带大家了解下MVVM是什么。">
+<meta property="og:image" content="http://image.beekka.com/blog/2015/bg2015020105.png">
+<meta property="og:image" content="http://image.beekka.com/blog/2015/bg2015020109.png">
+<meta property="og:image" content="http://image.beekka.com/blog/2015/bg2015020110.png">
+<meta property="og:updated_time" content="2015-08-04T14:51:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android ORM库ActiveAndroid介绍">
-<meta name="twitter:description" content="Github https://github.com/pardom/ActiveAndroid  官网 http://www.activeandroid.com/">
+<meta name="twitter:title" content="android-data-binding-技术介绍-0">
+<meta name="twitter:description" content="Data binding (双向绑定)是Google在今年的IO大会上推出的一套数据绑定框架，其目的是为了使Android的开发支持上MVVM框架，减少代码耦合。使Android开发更加的易于维护，易于测试。首先简单的带大家了解下MVVM是什么。">
   
     <link rel="alternative" href="/atom.xml" title="大光的博客" type="application/atom+xml">
   
@@ -162,11 +165,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-Android ORM库ActiveAndroid介绍" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="android-android-data-binding-技术介绍-0" class="article article-type-android" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/03/27/Android ORM库ActiveAndroid介绍/" class="article-date">
-  	<time datetime="2015-03-27T14:10:25.000Z" itemprop="datePublished">2015-03-27</time>
+      <a href="/2015/08/01/android-data-binding-技术介绍-0/" class="article-date">
+  	<time datetime="2015-08-01T13:38:53.000Z" itemprop="datePublished">2015-08-01</time>
 </a>
     </div>
   
@@ -179,7 +182,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Android ORM库ActiveAndroid介绍
+      android-data-binding-技术介绍-0
     </h1>
   
 
@@ -188,7 +191,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-ORM/">-Android -ORM</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/data-binding/">data binding</a></li></ul>
 	</div>
 
         
@@ -199,101 +202,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>Github <a href="https://github.com/pardom/ActiveAndroid" target="_blank" rel="external">https://github.com/pardom/ActiveAndroid</a><br>  官网 <a href="http://www.activeandroid.com/" target="_blank" rel="external">http://www.activeandroid.com/</a></p>
-</blockquote>
+        <p>Data binding (双向绑定)是Google在今年的IO大会上推出的一套数据绑定框架，其目的是为了使Android的开发支持上MVVM框架，减少代码耦合。使Android开发更加的易于维护，易于测试。首先简单的带大家了解下MVVM是什么。</p>
 <a id="more"></a>
-<h3 id="简单介绍">简单介绍</h3><ul>
-<li>什么是客户端开发<blockquote>
-<p>我所理解的客户端开发，就是将数据以各种各样的形式展现出来。当然也会对数据做一些简单的处理。这避免不于数据库的交互，<br>而在Android上做数据库交互是非常麻烦的事情。所以就需用一下ORM库来解决这些问题。</p>
-</blockquote>
-</li>
-<li>什么是ORM<blockquote>
-<p>数据对象模型，顾名思义。就是对象和关系型数据之间的转换，避免了写SQL语句</p>
-</blockquote>
-</li>
-<li>ActiveAndroid <blockquote>
-<p>没有什么可说的，就两个字“简单”，使用的是反射</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="具体使用（三步长拳）">具体使用（三步长拳）</h3><ul>
-<li><p>第一步</p>
-<blockquote>
-<p>在AndroidManifest.xml中添加两个配置<br><code>&lt;meta-data android:name=&quot;AA_DB_NAME&quot; android:value=&quot;mydata.db&quot;/\&gt;</code><br>数据库名<br><code>&lt;meta-data android:name=&quot;AA_DB_VERSION&quot; android:value=&quot;1&quot;/\&gt;</code><br>数据库版本号，用于数据升级</p>
-</blockquote>
-</li>
-<li><p>第二步</p>
-<blockquote>
-<p>继承<code>com.activeandroid.app.Application</code></p>
-</blockquote>
-</li>
-</ul>
-<!--java-->
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Application</span> {</span>
-}
-
-&lt;application android:name=<span class="string">".app.UimApplication"</span> ...
-</code></pre><p>如果无法继承<code>com.activeandroid.app.Application</code>也可以</p>
-<!--java-->
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">SomeLibraryApplication</span> {</span>
-    <span class="annotation">@Override</span>
-    public void onCreate() {
-        <span class="keyword">super</span>.onCreate();
-        <span class="type">ActiveAndroid</span>.initialize(<span class="keyword">this</span>);
-    }
-    <span class="annotation">@Override</span>
-    public void onTerminate() {
-        <span class="keyword">super</span>.onTerminate();
-        <span class="type">ActiveAndroid</span>.dispose();
-    }
-}
-</code></pre><ul>
-<li>第三步<blockquote>
-<p>创建表</p>
-</blockquote>
-</li>
-</ul>
-<!--java-->
-<pre><code><span class="annotation">@Table</span>(name = <span class="string">"Userinfo"</span>)
-public <span class="class"><span class="keyword">class</span> <span class="title">Userinfo</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Model</span> {</span>
-    <span class="annotation">@Column</span>(name = <span class="string">"Name"</span>)
-    public <span class="type">String</span> name;
-
-    <span class="annotation">@Column</span>(name = <span class="string">"passWord"</span>)
-    public <span class="type">String</span> passWord;
-}
-</code></pre><blockquote>
-<p>打完收工</p>
-</blockquote>
-<h3 id="数据库升级">数据库升级</h3><ul>
-<li>AndroidManifest.xml中数据库版本号AA_DB_VERSION（必须比上一版本号大的正整数）</li>
-<li>在assest目录里面创建sql文件，目录结构（/migrations/升级后的版本号.sql），文件里面你需要写上你变动数据库的sql语句（一行一句sql语句）</li>
-</ul>
-<h3 id="源码解读">源码解读</h3><ul>
-<li><p>表生成</p>
-<blockquote>
-<p>应用在启动的时候通过反射将所有的表对象加载到内存，在onCreate的时候创建所有的表</p>
-</blockquote>
-</li>
-<li><p>增删改查的实现</p>
-<blockquote>
-<p>通过字符串拼接转换成查询语句进行查询</p>
-</blockquote>
-</li>
-<li><p>升级</p>
-<blockquote>
-<p>取出assets/migrations 文件夹中所有的.sql文件。对版本号进行匹配。</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="中间人攻击神器_mitmproxy">中间人攻击神器 mitmproxy</h3><ul>
-<li>安装<ul>
-<li>sudo apt-get install mitmproxy</li>
-</ul>
-</li>
-<li>使用<br>  1、在.mitmproxy下有个mitmproxy-ca-cert.cer发送到手机上，<br>  2、手机上安装证书<br>  3、添加代理<br>  4、输入命令mitmproxy</li>
-</ul>
+<h3 id="MVVM是什么？">MVVM是什么？</h3><p>我们一步步来，从MVC开始。<br>MVC 我们都知道，模型——视图——控制器。为了使得程序的各个部分分离降低耦合性，我们对代码的结构进行了划分。<br><img src="http://image.beekka.com/blog/2015/bg2015020105.png" alt="MVC 示意图"><br>他们的通信方式也如上图所示，即View层触发操作通知到业务层完成逻辑处理，业务层完成业务逻辑之后通知Model层更新数据，数据更新完之后通知View层展现。在实际运用中人们发现View和Model之间的依赖还是太强，希望他们可以绝对独立的存在，慢慢的就演化出了MVP。<br><img src="http://image.beekka.com/blog/2015/bg2015020109.png" alt="MVP 示意图"><br>Presenter 替换掉了Controller，不仅仅处理逻辑部分。而且还控制着View的刷新，监听Model层的数据变化。这样隔离掉View和Model的关系后使得View层变的非常的薄，没有任何的逻辑部分又不用主动监听数据，被称之为“被动视图”。</p>
+<p><img src="http://image.beekka.com/blog/2015/bg2015020110.png" alt="MVVM 示意图"><br>至于MVVM基本上和MVP一模一样，感觉只是名字替换了一下。他的关键技术就是今天的主题(Data Binding)。View的变化可以自动的反应在ViewModel，ViewModel的数据变化也会自动反应到View上。就样开发者不用就处理接收事件和View更新的工作，框架就帮你做好了。</p>
+<p>OK 大家对MVVM应该有所了解了吧。下一章就来说说Data Binding怎么使用。<a href="/2015/08/04/android-data-binding-技术介绍-1/">Android Data Binding 技术介绍(1)</a></p>
 
       
     </div>
@@ -303,18 +216,18 @@ public <span class="class"><span class="keyword">class</span> <span class="title
     
 <nav id="article-nav">
   
-    <a href="/2015/08/01/android-data-binding-技术介绍-0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/08/04/android-data-binding-技术介绍-1/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          android-data-binding-技术介绍-0
+          android-data-binding-技术介绍-1
         
       </div>
     </a>
   
   
-    <a href="/2014/12/11/Android 开源框架：AndroidAnnotations/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">android开源框架 annotations配置</div>
+    <a href="/2015/03/27/Android ORM库ActiveAndroid介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android ORM库ActiveAndroid介绍</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -343,7 +256,7 @@ public <span class="class"><span class="keyword">class</span> <span class="title
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Android ORM库ActiveAndroid介绍" data-title="Android ORM库ActiveAndroid介绍" data-url="http://daguang.me/2015/03/27/Android ORM库ActiveAndroid介绍/"></div>
+	<div class="ds-thread" data-thread-key="android-data-binding-技术介绍-0" data-title="android-data-binding-技术介绍-0" data-url="http://daguang.me/2015/08/01/android-data-binding-技术介绍-0/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
