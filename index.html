@@ -163,7 +163,9 @@
     <article id="post-React-Native-For-Android图片热更新" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2016/07/27/React-Native-For-Android图片热更新/" class="article-date">
+  	<time datetime="2016-07-27T14:32:32.000Z" itemprop="datePublished">2016-07-27</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -173,6 +175,12 @@
     
       <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/27/React-Native-For-Android图片热更新/">React-Native-For-Android图片热更新</a>
+    </h1>
+  
+
       </header>
       
     
@@ -180,23 +188,21 @@
       
         <p>RN对图片加载支持了很多套方案，</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//加载远程图片</span></div><div class="line">&lt;Image source=&#123;&#123;url:<span class="string">'http://www.wacai.com/icon.png'</span>&#125;&#125; /&gt;</div><div class="line"><span class="comment">//加载res类的图片</span></div><div class="line">&lt;Image source=&#123;&#123;url:<span class="string">'icon'</span>&#125;&#125; /&gt;</div><div class="line"><span class="comment">//加载指定文件系统的图片</span></div><div class="line">&lt;Image source=&#123;&#123;url:<span class="string">'file:///sdcard/icon.png'</span>&#125;&#125; /&gt;</div><div class="line"><span class="comment">//这个比较流弊，请看下文介绍</span></div><div class="line">&lt;Image source=&#123;<span class="built_in">require</span>(<span class="string">'./assets/img/icon.ong'</span>)&#125;</div></pre></td></tr></table></figure>
-<p>为啥讲require的方式比较流弊了，废话不流弊FB会推荐这种方案嘛！我们的图片热更新全靠他了好吗！网上的那些什么图片热更新的教程都别看。FB在21的版本上已经完美解决了。 完美….</p>
-<h3 id="热部署">热部署</h3><p>RN在19之前都是将图片打包到res文件夹，通过图片名称找到对应的ID，然后找到图片的。下面是Android的实现。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public int getResourceDrawableId(Context context, @Nullable <span class="built_in">String</span> name) &#123;</div><div class="line">    <span class="keyword">if</span> (name == <span class="literal">null</span> || name.isEmpty()) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    name = name.toLowerCase().replace(<span class="string">"-"</span>, <span class="string">"_"</span>);</div><div class="line">    <span class="keyword">if</span> (mResourceDrawableIdMap.containsKey(name)) &#123;</div><div class="line">      <span class="keyword">return</span> mResourceDrawableIdMap.get(name);</div><div class="line">    &#125;</div><div class="line">    int id = context.getResources().getIdentifier(</div><div class="line">        name,</div><div class="line">        <span class="string">"drawable"</span>,</div><div class="line">        context.getPackageName());</div><div class="line">    mResourceDrawableIdMap.put(name, id);</div><div class="line">    <span class="keyword">return</span> id;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
-<p>但是要知道res文件夹是没有访问权限的啊….那么我们代码更新了，图片要更新改怎么办，怎么办嘛。</p>
-<p>后来微软的一位做CodePush的作者看不下去了，CodePush是什么请谷歌一下。于是咔咔把RN的加载代码重构了。FB看了说”我去,完美解决嘛!”于是尴尬的合并的代码。</p>
-<h3 id="那么问题来了，是怎么解决的了！">那么问题来了，是怎么解决的了！</h3><p>首先通过require获取资源的时候回判断是否为开发状态“DEV”,开发状态就通Node服务中获取资源地址，非开发状态就去组装native的资源地址<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">devServerURL ? getPathOnDevserver(devServerURL, asset) : <span class="type">getPathInArchive</span>(asset),</div></pre></td></tr></table></figure></p>
-<p>根据不同的平台获取拼接不同的目录,其中 offlinePath 是从native配置的资源目录决定的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getOfflinePath</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (_offlinePath === <span class="literal">undefined</span>) &#123;</div><div class="line">    <span class="keyword">var</span> scriptURL = SourceCode.scriptURL;</div><div class="line">    <span class="keyword">var</span> match = scriptURL &amp;&amp; scriptURL.match(<span class="regexp">/^file:\/\/(\/.*\/)/</span>);</div><div class="line">    <span class="keyword">if</span> (match) &#123;</div><div class="line">      _offlinePath = match[<span class="number">1</span>];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      _offlinePath = <span class="string">''</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> _offlinePath;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPathInArchive</span>(<span class="params">asset</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> offlinePath = getOfflinePath();</div><div class="line">  <span class="keyword">if</span> (Platform.OS === <span class="string">'android'</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (offlinePath) &#123;</div><div class="line">      <span class="comment">// E.g. 'file:///sdcard/AwesomeModule/drawable-mdpi/icon.png'</span></div><div class="line">      <span class="keyword">return</span> <span class="string">'file://'</span> + offlinePath + getAssetPathInDrawableFolder(asset);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// E.g. 'assets_awesomemodule_icon'</span></div><div class="line">    <span class="comment">// The Android resource system picks the correct scale.</span></div><div class="line">    <span class="keyword">return</span> assetPathUtils.getAndroidResourceIdentifier(asset);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">// E.g. '/assets/AwesomeModule/icon@2x.png'</span></div><div class="line">    <span class="keyword">return</span> offlinePath + getScaledAssetPath(asset);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="OK_那么我们该如何做图片的热部署。">OK 那么我们该如何做图片的热部署。</h3><p>首先我没有要定义一个js脚步目录，可以是data目录也可以是SdCard。注意一定要以/开头，就算编译器告诉你这样可能不对也得以/开头。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> String <span class="title">getJSBundleFile</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">"/sdcard/bundle/index.android.bundle"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>然后打包，把打出的bundle和图片放到这个目录下。打开你APP玩耍吧….</p>
-
       
     </div>
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-Native-Android/">-React-Native -Android</a></li></ul>
+	</div>
+
       
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/27/React-Native-For-Android图片热更新/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -214,7 +220,9 @@
     <article id="post-使用javassist修改apkpatch包" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2015/12/23/使用javassist修改apkpatch包/" class="article-date">
+  	<time datetime="2015-12-23T10:22:07.000Z" itemprop="datePublished">2015-12-23</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -224,6 +232,12 @@
     
       <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/23/使用javassist修改apkpatch包/">使用javassist修改apkpatch包</a>
+    </h1>
+  
+
       </header>
       
     
@@ -235,7 +249,12 @@
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javassist-apkpatch-android/">-javassist -apkpatch -android</a></li></ul>
+	</div>
+
       
+
       
         <p class="article-more-link">
           <a  href="/2015/12/23/使用javassist修改apkpatch包/#more">more >></a>
@@ -257,7 +276,9 @@
     <article id="post-React-Native之UI设计" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2015/11/30/React-Native之UI设计/" class="article-date">
+  	<time datetime="2015-11-29T17:04:44.000Z" itemprop="datePublished">2015-11-30</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -267,6 +288,12 @@
     
       <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/30/React-Native之UI设计/">React-Native之UI设计</a>
+    </h1>
+  
+
       </header>
       
     
@@ -280,7 +307,12 @@
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-React-Native/">-Android -React-Native</a></li></ul>
+	</div>
+
       
+
       
         <p class="article-more-link">
           <a  href="/2015/11/30/React-Native之UI设计/#more">more >></a>
@@ -302,7 +334,9 @@
     <article id="post-初识React-Native" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2015/11/22/初识React-Native/" class="article-date">
+  	<time datetime="2015-11-22T06:02:00.000Z" itemprop="datePublished">2015-11-22</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -312,6 +346,12 @@
     
       <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/22/初识React-Native/">初识React-Native</a>
+    </h1>
+  
+
       </header>
       
     
@@ -323,7 +363,12 @@
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-Native-Android/">-React-Native -Android</a></li></ul>
+	</div>
+
       
+
       
         <p class="article-more-link">
           <a  href="/2015/11/22/初识React-Native/#more">more >></a>
@@ -345,7 +390,9 @@
     <article id="post-React-Native之Android开发" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2015/11/21/React-Native之Android开发/" class="article-date">
+  	<time datetime="2015-11-21T02:02:00.000Z" itemprop="datePublished">2015-11-21</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -355,6 +402,12 @@
     
       <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/21/React-Native之Android开发/">React-Native之Android开发</a>
+    </h1>
+  
+
       </header>
       
     
@@ -366,7 +419,12 @@
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-Native-Android/">-React-Native -Android</a></li></ul>
+	</div>
+
       
+
       
         <p class="article-more-link">
           <a  href="/2015/11/21/React-Native之Android开发/#more">more >></a>
@@ -388,7 +446,9 @@
     <article id="post-Flux框架之于Android应用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2015/09/07/Flux框架之于Android应用/" class="article-date">
+  	<time datetime="2015-09-07T14:44:48.000Z" itemprop="datePublished">2015-09-07</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -398,6 +458,12 @@
     
       <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/07/Flux框架之于Android应用/">Flux框架之于Android应用</a>
+    </h1>
+  
+
       </header>
       
     
@@ -409,7 +475,12 @@
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flux/">Flux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单元测试/">单元测试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+	</div>
+
       
+
       
         <p class="article-more-link">
           <a  href="/2015/09/07/Flux框架之于Android应用/#more">more >></a>
@@ -431,7 +502,9 @@
     <article id="post-Data-Bindign到底有什么卵用？" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2015/08/07/Data-Bindign到底有什么卵用？/" class="article-date">
+  	<time datetime="2015-08-07T14:44:48.000Z" itemprop="datePublished">2015-08-07</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -441,6 +514,12 @@
     
       <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/07/Data-Bindign到底有什么卵用？/">Data-Bindign到底有卵用？</a>
+    </h1>
+  
+
       </header>
       
     
@@ -452,7 +531,12 @@
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/data-binding/">data binding</a></li></ul>
+	</div>
+
       
+
       
         <p class="article-more-link">
           <a  href="/2015/08/07/Data-Bindign到底有什么卵用？/#more">more >></a>
@@ -474,7 +558,9 @@
     <article id="android-android-data-binding-技术介绍-1" class="article article-type-android" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2015/08/04/android-data-binding-技术介绍-1/" class="article-date">
+  	<time datetime="2015-08-04T13:38:53.000Z" itemprop="datePublished">2015-08-04</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -484,6 +570,12 @@
     
       <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/04/android-data-binding-技术介绍-1/">android-data-binding-技术介绍-1</a>
+    </h1>
+  
+
       </header>
       
     
@@ -495,7 +587,12 @@
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/data-binding/">data binding</a></li></ul>
+	</div>
+
       
+
       
         <p class="article-more-link">
           <a  href="/2015/08/04/android-data-binding-技术介绍-1/#more">more >></a>
@@ -517,7 +614,9 @@
     <article id="android-android-data-binding-技术介绍-0" class="article article-type-android" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2015/08/01/android-data-binding-技术介绍-0/" class="article-date">
+  	<time datetime="2015-08-01T13:38:53.000Z" itemprop="datePublished">2015-08-01</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -527,6 +626,12 @@
     
       <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/01/android-data-binding-技术介绍-0/">android-data-binding-技术介绍-0</a>
+    </h1>
+  
+
       </header>
       
     
@@ -538,7 +643,12 @@
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/data-binding/">data binding</a></li></ul>
+	</div>
+
       
+
       
         <p class="article-more-link">
           <a  href="/2015/08/01/android-data-binding-技术介绍-0/#more">more >></a>
@@ -560,7 +670,9 @@
     <article id="post-Android ORM库ActiveAndroid介绍" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2015/03/27/Android ORM库ActiveAndroid介绍/" class="article-date">
+  	<time datetime="2015-03-27T14:10:25.000Z" itemprop="datePublished">2015-03-27</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -570,6 +682,12 @@
     
       <header class="article-header">
         
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/27/Android ORM库ActiveAndroid介绍/">Android ORM库ActiveAndroid介绍</a>
+    </h1>
+  
+
       </header>
       
     
@@ -583,7 +701,12 @@
     
     <div class="article-info article-info-index">
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-ORM/">-Android -ORM</a></li></ul>
+	</div>
+
       
+
       
         <p class="article-more-link">
           <a  href="/2015/03/27/Android ORM库ActiveAndroid介绍/#more">more >></a>

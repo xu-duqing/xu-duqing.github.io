@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="大光的博客">
 <meta property="og:description" content="RN对图片加载支持了很多套方案，
 12345678//加载远程图片&amp;lt;Image source=&amp;#123;&amp;#123;url:&apos;http://www.wacai.com/icon.png&apos;&amp;#125;&amp;#125; /&amp;gt;//加载res类的图片&amp;lt;Image source=&amp;#123;&amp;#123;url:&apos;icon&apos;&amp;#125;&amp;#125; /&amp;gt;//加载指定文件系统的图片&amp;lt;">
-<meta property="og:updated_time" content="2016-07-27T14:36:43.000Z">
+<meta property="og:updated_time" content="2016-07-27T14:50:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React-Native-For-Android图片热更新">
 <meta name="twitter:description" content="RN对图片加载支持了很多套方案，
@@ -168,7 +168,9 @@
       <div class="body-wrap"><article id="post-React-Native-For-Android图片热更新" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      
+      <a href="/2016/07/27/React-Native-For-Android图片热更新/" class="article-date">
+  	<time datetime="2016-07-27T14:32:32.000Z" itemprop="datePublished">2016-07-27</time>
+</a>
     </div>
   
   <div class="article-inner">
@@ -178,11 +180,22 @@
     
       <header class="article-header">
         
+  
+    <h1 class="article-title" itemprop="name">
+      React-Native-For-Android图片热更新
+    </h1>
+  
+
       </header>
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React-Native-Android/">-React-Native -Android</a></li></ul>
+	</div>
+
         
+
         <div class="clearfix"></div>
       </div>
       
@@ -191,6 +204,7 @@
       
         <p>RN对图片加载支持了很多套方案，</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//加载远程图片</span></div><div class="line">&lt;Image source=&#123;&#123;url:<span class="string">'http://www.wacai.com/icon.png'</span>&#125;&#125; /&gt;</div><div class="line"><span class="comment">//加载res类的图片</span></div><div class="line">&lt;Image source=&#123;&#123;url:<span class="string">'icon'</span>&#125;&#125; /&gt;</div><div class="line"><span class="comment">//加载指定文件系统的图片</span></div><div class="line">&lt;Image source=&#123;&#123;url:<span class="string">'file:///sdcard/icon.png'</span>&#125;&#125; /&gt;</div><div class="line"><span class="comment">//这个比较流弊，请看下文介绍</span></div><div class="line">&lt;Image source=&#123;<span class="built_in">require</span>(<span class="string">'./assets/img/icon.ong'</span>)&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>为啥讲require的方式比较流弊了，废话不流弊FB会推荐这种方案嘛！我们的图片热更新全靠他了好吗！网上的那些什么图片热更新的教程都别看。FB在21的版本上已经完美解决了。 完美….</p>
 <h3 id="热部署">热部署</h3><p>RN在19之前都是将图片打包到res文件夹，通过图片名称找到对应的ID，然后找到图片的。下面是Android的实现。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public int getResourceDrawableId(Context context, @Nullable <span class="built_in">String</span> name) &#123;</div><div class="line">    <span class="keyword">if</span> (name == <span class="literal">null</span> || name.isEmpty()) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    name = name.toLowerCase().replace(<span class="string">"-"</span>, <span class="string">"_"</span>);</div><div class="line">    <span class="keyword">if</span> (mResourceDrawableIdMap.containsKey(name)) &#123;</div><div class="line">      <span class="keyword">return</span> mResourceDrawableIdMap.get(name);</div><div class="line">    &#125;</div><div class="line">    int id = context.getResources().getIdentifier(</div><div class="line">        name,</div><div class="line">        <span class="string">"drawable"</span>,</div><div class="line">        context.getPackageName());</div><div class="line">    mResourceDrawableIdMap.put(name, id);</div><div class="line">    <span class="keyword">return</span> id;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
 <p>但是要知道res文件夹是没有访问权限的啊….那么我们代码更新了，图片要更新改怎么办，怎么办嘛。</p>
@@ -208,14 +222,55 @@
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2015/12/23/使用javassist修改apkpatch包/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用javassist修改apkpatch包</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
-
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="React-Native-For-Android图片热更新" data-title="React-Native-For-Android图片热更新" data-url="http://daguang.me/2016/07/27/React-Native-For-Android图片热更新/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
