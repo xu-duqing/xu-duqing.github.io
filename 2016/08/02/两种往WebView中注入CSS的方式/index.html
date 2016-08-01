@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>android ORM 框架ActiveAndroid介绍 | 大光的博客</title>
+  <title>两种往WebView中注入CSS的方式 | 大光的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近在做新项目的时候用到的ActiveAndroid。简单介绍一下使用方法，不做深入理解算是一个入门文档吧。ORM框架也用过一些，这个是用起来最简单的，具体的效率数据量太小看不出来。不过这个多人在用应该也不会有大的影响吧">
+  <meta name="description" content="前言两年前有个项目需要在WebView中修改H5的样式，当时为解决这个问题还是费了一点时间。今天同事也遇到类似的需求找到我，于是决定整理出来供有需要的人参考。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android ORM 框架ActiveAndroid介绍">
-<meta property="og:url" content="http://daguang.me/2014/11/26/ActiveAndroid/index.html">
+<meta property="og:title" content="两种往WebView中注入CSS的方式">
+<meta property="og:url" content="http://daguang.me/2016/08/02/两种往WebView中注入CSS的方式/index.html">
 <meta property="og:site_name" content="大光的博客">
-<meta property="og:description" content="最近在做新项目的时候用到的ActiveAndroid。简单介绍一下使用方法，不做深入理解算是一个入门文档吧。ORM框架也用过一些，这个是用起来最简单的，具体的效率数据量太小看不出来。不过这个多人在用应该也不会有大的影响吧">
-<meta property="og:updated_time" content="2014-11-26T08:44:25.000Z">
+<meta property="og:description" content="前言两年前有个项目需要在WebView中修改H5的样式，当时为解决这个问题还是费了一点时间。今天同事也遇到类似的需求找到我，于是决定整理出来供有需要的人参考。">
+<meta property="og:updated_time" content="2016-08-01T16:25:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android ORM 框架ActiveAndroid介绍">
-<meta name="twitter:description" content="最近在做新项目的时候用到的ActiveAndroid。简单介绍一下使用方法，不做深入理解算是一个入门文档吧。ORM框架也用过一些，这个是用起来最简单的，具体的效率数据量太小看不出来。不过这个多人在用应该也不会有大的影响吧">
+<meta name="twitter:title" content="两种往WebView中注入CSS的方式">
+<meta name="twitter:description" content="前言两年前有个项目需要在WebView中修改H5的样式，当时为解决这个问题还是费了一点时间。今天同事也遇到类似的需求找到我，于是决定整理出来供有需要的人参考。">
   
     <link rel="alternative" href="/atom.xml" title="大光的博客" type="application/atom+xml">
   
@@ -162,11 +162,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-ActiveAndroid" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-两种往WebView中注入CSS的方式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/11/26/ActiveAndroid/" class="article-date">
-  	<time datetime="2014-11-26T08:02:00.000Z" itemprop="datePublished">2014-11-26</time>
+      <a href="/2016/08/02/两种往WebView中注入CSS的方式/" class="article-date">
+  	<time datetime="2016-08-01T16:22:45.000Z" itemprop="datePublished">2016-08-02</time>
 </a>
     </div>
   
@@ -179,7 +179,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      android ORM 框架ActiveAndroid介绍
+      两种往WebView中注入CSS的方式
     </h1>
   
 
@@ -188,7 +188,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ORM-Android/">-ORM -Android</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js-WebView-CSS注入-Android/">-js -WebView -CSS注入 -Android</a></li></ul>
 	</div>
 
         
@@ -199,59 +199,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近在做新项目的时候用到的ActiveAndroid。简单介绍一下使用方法，不做深入理解算是一个入门文档吧。<br>ORM框架也用过一些，这个是用起来最简单的，具体的效率数据量太小看不出来。不过这个多人在用应该也不会有大的影响吧<br><a id="more"></a></p>
-<h3 id="第一步">第一步</h3><p>在AndroidManifest.xml中添加两个配置</p>
-<blockquote>
-<p><code>&lt;meta-data android:name=&quot;AA_DB_NAME&quot; android:value=&quot;mydata.db&quot;/\&gt;</code><br>数据库名<br><code>&lt;meta-data android:name=&quot;AA_DB_VERSION&quot; android:value=&quot;1&quot;/\&gt;</code><br>数据库版本号，用于数据升级</p>
+        <h2 id="前言">前言</h2><p>两年前有个项目需要在WebView中修改H5的样式，当时为解决这个问题还是费了一点时间。今天同事也遇到类似的需求找到我，于是决定整理出来供有需要的人参考。<br><a id="more"></a></p>
+<h2 id="方式一">方式一</h2><blockquote>
+<p>利用JS将获取页面中的Head标签中的style并添加样式。然后通过loadUrl的方式加载这段js就可以了。</p>
 </blockquote>
-<h3 id="第二步">第二步</h3><p>继承<code>com.activeandroid.app.Application</code></p>
-<!--java-->
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Application</span> {</span>
-}
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">javascript:</div><div class="line"><span class="keyword">var</span> tagHead =<span class="built_in">document</span>.documentElement.firstChild;</div><div class="line"><span class="keyword">var</span> tagStyle = <span class="built_in">document</span>.createElement(<span class="string">"style"</span>);</div><div class="line">tagStyle.setAttribute(<span class="string">"type"</span>, <span class="string">"text/css"</span>);</div><div class="line">tagStyle.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"&lt;style&gt;#header &#123;display:none;!important&#125;&lt;/style&gt;"</span>));</div><div class="line"><span class="keyword">var</span> tagHeadAdd = tagHead.appendChild(tagStyle);</div></pre></td></tr></table></figure>
+<h2 id="方式二">方式二</h2><blockquote>
+<p>利用WebView加载的资源的回调。  </p>
+</blockquote>
+<p>API 11之后WebView提供了shouldInterceptRequest的回调接口，此接口是拦截页面中的所有资源加载包括（CSS、JS、Image）。我们可以通过此回调修改加载的数据并返回。如果返回null则默认加载网络。代码如下：</p>
+<figure class="highlight qml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"> public WebResourceResponse shouldInterceptRequest(WebView view, <span class="built_in">String</span> <span class="built_in">url</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">url</span>.contains(<span class="string">".css"</span>)) &#123;</div><div class="line">        WebResourceResponse resourceResponse = <span class="literal">null</span>;</div><div class="line"></div><div class="line">        File cssFile = <span class="keyword">new</span> File(<span class="string">"file://assets/xxx.css"</span>);</div><div class="line">        <span class="keyword">if</span> (cssFile.exists() &amp;&amp; cssFile.length() &gt; <span class="number">0</span>) &#123;</div><div class="line">            InputStream <span class="keyword">in</span> = <span class="literal">null</span>;</div><div class="line">            <span class="title">try</span> &#123;</div><div class="line">                <span class="keyword">in</span> = <span class="keyword">new</span> FileInputStream(cssFile);</div><div class="line">                resourceResponse = <span class="keyword">new</span> WebResourceResponse(<span class="string">"text/css"</span>, <span class="string">"UTF-8"</span>, <span class="keyword">in</span>);</div><div class="line">            &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (resourceResponse != <span class="literal">null</span>)</div><div class="line">            <span class="keyword">return</span> resourceResponse;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.shouldInterceptRequest(view, <span class="built_in">url</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样我们就将网页中的css替换成了本地的css。当然这种方式能替换所有网页上的资源。就看你的需求啦。</p>
 
-&lt;application android:name=<span class="string">".app.UimApplication"</span> ...
-</code></pre><p>如果无法继承<code>com.activeandroid.app.Application</code>也可以</p>
-<!--java-->
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">SomeLibraryApplication</span> {</span>
-    <span class="annotation">@Override</span>
-    public void onCreate() {
-        <span class="keyword">super</span>.onCreate();
-        <span class="type">ActiveAndroid</span>.initialize(<span class="keyword">this</span>);
-    }
-    <span class="annotation">@Override</span>
-    public void onTerminate() {
-        <span class="keyword">super</span>.onTerminate();
-        <span class="type">ActiveAndroid</span>.dispose();
-    }
-}
-</code></pre><h3 id="第三步">第三步</h3><p>创建表<br><!--java--></p>
-<pre><code><span class="annotation">@Table</span>(name = <span class="string">"Userinfo"</span>)
-public <span class="class"><span class="keyword">class</span> <span class="title">Userinfo</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Model</span> {</span>
-    <span class="annotation">@Column</span>(name = <span class="string">"Name"</span>)
-    public <span class="type">String</span> name;
-
-    <span class="annotation">@Column</span>(name = <span class="string">"passWord"</span>)
-    public <span class="type">String</span> passWord;
-}
-</code></pre><h3 id="OK_现在开始就可以对数据进行增删改查了">OK 现在开始就可以对数据进行增删改查了</h3><p>增：<br><!--java--></p>
-<pre><code>Userinfo <span class="variable">userinfo =</span> new Userinfo();
-userinfo.<span class="variable">name =</span> <span class="string">"sam Xu"</span>;
-userinfo.<span class="variable">passWord=</span><span class="string">"123456"</span>;
-userinfo.save();
-</code></pre><p>删：<br><!--java--></p>
-<pre><code>Userinfo userinfo = Userinfo.load(Userinfo.<span class="keyword">class</span>, <span class="number">1</span>);
-userinfo.<span class="keyword">delete</span>();
-
-Userinfo.<span class="keyword">delete</span>(Userinfo.<span class="keyword">class</span>, <span class="number">1</span>);
-
-<span class="keyword">new</span> <span class="keyword">Delete</span>().<span class="keyword">from</span>(Userinfo.<span class="keyword">class</span>).Where(<span class="string">"name = ?"</span>,<span class="string">"samxu"</span>).execute();
-</code></pre><p>改：<br><!--java--></p>
-<pre><code>Userinfo <span class="keyword">info</span> = Userinfo.<span class="keyword">load</span>(Userinfo.class,<span class="number">1</span>);
-<span class="keyword">info</span>.name = <span class="string">"samxu"</span>;
-<span class="keyword">info</span>.save();
-</code></pre><p>查：<br><!--java--></p>
-<pre><code><span class="keyword">new</span> <span class="keyword">Select</span>().<span class="keyword">from</span>(Userinfo.<span class="keyword">class</span>).<span class="keyword">Where</span>(<span class="string">"name = ?"</span>,<span class="string">"samxu"</span>).executeSingle();
-</code></pre><h3 id="更多语句自己去查接口吧！">更多语句自己去查接口吧！</h3>
       
     </div>
     
@@ -260,18 +219,9 @@ Userinfo.<span class="keyword">delete</span>(Userinfo.<span class="keyword">clas
     
 <nav id="article-nav">
   
-    <a href="/2014/12/11/Android 开源框架：AndroidAnnotations/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          android开源框架 annotations配置
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/11/26/UserinfoMining客户端架构备注/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">UserinfoMining客户端架构备注</div>
+    <a href="/2016/07/27/React-Native-For-Android图片热更新/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React-Native-For-Android图片热更新</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -300,7 +250,7 @@ Userinfo.<span class="keyword">delete</span>(Userinfo.<span class="keyword">clas
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="ActiveAndroid" data-title="android ORM 框架ActiveAndroid介绍" data-url="http://daguang.me/2014/11/26/ActiveAndroid/"></div>
+	<div class="ds-thread" data-thread-key="两种往WebView中注入CSS的方式" data-title="两种往WebView中注入CSS的方式" data-url="http://daguang.me/2016/08/02/两种往WebView中注入CSS的方式/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
