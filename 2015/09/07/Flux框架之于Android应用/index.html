@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Flux框架之于Android应用 | 大光的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="上次分享也吐槽了Android之于单元测试的困难重重，原因也就不多说了详见Android 进行单元测试难在哪。Flux是前端的一个基于数据流的框架，做到层于层之间很好的分离。基于这个思想在Android做了验证，很好的支持了单元测试。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flux框架之于Android应用">
+<meta property="og:url" content="http://daguang.me/2015/09/07/Flux框架之于Android应用/index.html">
+<meta property="og:site_name" content="大光的博客">
+<meta property="og:description" content="上次分享也吐槽了Android之于单元测试的困难重重，原因也就不多说了详见Android 进行单元测试难在哪。Flux是前端的一个基于数据流的框架，做到层于层之间很好的分离。基于这个思想在Android做了验证，很好的支持了单元测试。">
+<meta property="og:image" content="http://ww4.sinaimg.cn/mw690/75a33d61gw1evxps7qv0nj20hs054wg9.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2015/0417/094037_Jc87_1035386.png">
+<meta property="og:updated_time" content="2015-09-17T02:39:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flux框架之于Android应用">
+<meta name="twitter:description" content="上次分享也吐槽了Android之于单元测试的困难重重，原因也就不多说了详见Android 进行单元测试难在哪。Flux是前端的一个基于数据流的框架，做到层于层之间很好的分离。基于这个思想在Android做了验证，很好的支持了单元测试。">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/mw690/75a33d61gw1evxps7qv0nj20hs054wg9.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="大光的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://avatars2.githubusercontent.com/u/8780122?v=3&amp;s=460" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">大光</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/xu-duqing" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1973632353" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/xu-du-qing" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Android-ORM/" style="font-size: 10px;">-Android -ORM</a> <a href="/tags/Android-React-Native/" style="font-size: 10px;">-Android -React-Native</a> <a href="/tags/ORM-Android/" style="font-size: 10px;">-ORM -Android</a> <a href="/tags/React-Native-Android/" style="font-size: 15px;">-React-Native -Android</a> <a href="/tags/javassist-apkpatch-android/" style="font-size: 10px;">-javassist -apkpatch -android</a> <a href="/tags/js-WebView-CSS注入-Android/" style="font-size: 10px;">-js -WebView -CSS注入 -Android</a> <a href="/tags/注解-Android/" style="font-size: 10px;">-注解 -Android</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Flux/" style="font-size: 10px;">Flux</a> <a href="/tags/MVVM/" style="font-size: 15px;">MVVM</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/arcgis/" style="font-size: 10px;">arcgis</a> <a href="/tags/art/" style="font-size: 10px;">art</a> <a href="/tags/data-binding/" style="font-size: 15px;">data binding</a> <a href="/tags/ios/" style="font-size: 10px;">ios</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/svg/" style="font-size: 10px;">svg</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">无事编码，有事骑车</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">大光</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://avatars2.githubusercontent.com/u/8780122?v=3&amp;s=460" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">大光</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/xu-duqing" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1973632353" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/xu-du-qing" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Flux框架之于Android应用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/07/Flux框架之于Android应用/" class="article-date">
+  	<time datetime="2015-09-07T14:44:48.000Z" itemprop="datePublished">2015-09-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Flux框架之于Android应用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flux/">Flux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/单元测试/">单元测试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上次分享也吐槽了Android之于单元测试的困难重重，原因也就不多说了详见<a href="http://blog.csdn.net/column/details/whyunittesthard.html" target="_blank" rel="external">Android 进行单元测试难在哪</a>。Flux是前端的一个基于数据流的框架，做到层于层之间很好的分离。基于这个思想在Android做了验证，很好的支持了单元测试。</p>
+<a id="more"></a>
+<h3 id="每一个应用都应该有一个架构">每一个应用都应该有一个架构</h3><p>之前写代码的时候很少考虑架构这一块，一切都是围着需求去做。实现这个业务需要几个API、几张表、几个activity。然后吭哧吭哧就做了。其实一直觉得这样的开发很好，快速有效嘛。后来随着项目越来越大，发现有点不对事儿。代码难看不说，模块相互牵扯难以阅读调试，单元测试更是无法去写。<br>在网上找了一些重构的资料补补短，发现应用分两种，设计出来和生长出来的。请对比下图理解。<br><img src="http://ww4.sinaimg.cn/mw690/75a33d61gw1evxps7qv0nj20hs054wg9.jpg" alt="城市规划"><br>很难说魔都这个城市是合理的或者美的是吧。</p>
+<h3 id="前端开发框架Flux">前端开发框架Flux</h3><p>这好像是最近比较火的前端开发框架，也是facebook搞出来的一套东西。然后看到有人将这套东西移植到Android用的还挺好。于是了解了一下！</p>
+<p><img src="http://static.oschina.net/uploads/space/2015/0417/094037_Jc87_1035386.png" alt="Flux"></p>
+<p>其实Flux架构的核心在于数据，就是一个数据的流动解决方案。看上去挺简单的，正好消息中心面临改版，月饼节那两天在家就合计着在项目上将这一套架构实现了。</p>
+<h3 id="移植到消息中心">移植到消息中心</h3><h4 id="1、Flux是基于通知的。它先把一条数据的生命周期定义成不同的层。层于层之间通过Action解耦。所以首先我要引人EventBus。">1、Flux是基于通知的。它先把一条数据的生命周期定义成不同的层。层于层之间通过Action解耦。所以首先我要引人EventBus。</h4><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">dependencies</span> &#123;</div><div class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: [<span class="string">'*.jar'</span>])</div><div class="line">    <span class="keyword">compile</span> <span class="string">'de.greenrobot:eventbus:2.4.0'</span></div><div class="line"></div><div class="line">    <span class="comment">//TEST COMPILE</span></div><div class="line">    testCompile <span class="string">"junit:junit:4.12"</span></div><div class="line">    testCompile <span class="string">"org.assertj:assertj-core:1.7.0"</span></div><div class="line">    testCompile(<span class="string">'org.robolectric:robolectric:3.0-rc2'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="2、_定义Action。传递事件和内容的媒介。我们这样定义">2、 定义Action。传递事件和内容的媒介。我们这样定义</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Action</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String type;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object <span class="keyword">data</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Action(String type, Object <span class="keyword">data</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">        <span class="keyword">this</span>.<span class="keyword">data</span> = <span class="keyword">data</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> String getType() &#123;</div><div class="line">        <span class="keyword">return</span> type;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Object getData() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">data</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> String toString() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Action&#123;"</span> +</div><div class="line">                <span class="string">"type='"</span> + type + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", data="</span> + <span class="keyword">data</span> +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="3、定义Dispatcher_做任务分发">3、定义Dispatcher 做任务分发</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dispatcher</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Dispatcher instance;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> EventBus mEventBus;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">Dispatcher</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.mEventBus = <span class="keyword">new</span> EventBus();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Dispatcher <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>)&#123;</div><div class="line">            instance = <span class="keyword">new</span> Dispatcher();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">despatcher</span><span class="params">(String type,Object data)</span></span>&#123;</div><div class="line">        mEventBus.post(<span class="keyword">new</span> Action(type,data));</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">emitChange</span><span class="params">(Store.StoreChangeEvent o)</span></span>&#123;</div><div class="line">        mEventBus.post(o);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">error</span><span class="params">(String errorMessage)</span></span>&#123;</div><div class="line">        mEventBus.post(<span class="keyword">new</span> ErrorEvent(errorMessage));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Object subscriber)</span></span>&#123;</div><div class="line">        mEventBus.register(subscriber);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unregister</span><span class="params">(Object subscriber)</span></span>&#123;</div><div class="line">        mEventBus.unregister(subscriber);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="4、定义Store_做状态保持以及业务逻辑">4、定义Store 做状态保持以及业务逻辑</h4><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">public <span class="class"><span class="keyword">class</span> <span class="title">StoreMessageList</span> <span class="keyword">extends</span> <span class="title">Store</span></span>&#123;</div><div class="line"></div><div class="line">    public <span class="type">StoreMessageList</span>(<span class="type">Dispatcher</span> dispatcher) &#123;</div><div class="line">        <span class="keyword">super</span>(dispatcher);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void onEvent(<span class="type">Action</span> action)&#123;</div><div class="line">    	<span class="comment">//事件处理</span></div><div class="line">    &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<h3 id="可测的Android代码">可测的Android代码</h3><p>我的理解就是将业务逻辑完全的独立出来。一条数据从WebApi获取到之后，经过存储、读取、业务处理、展示。这是一个完整的生命周期。而这个过程中只有业务处理是复杂多变的，也只有这个过程才是有必要做单元测试的。 而这个架构正好做到了按照数据的生命周期分层，层于层之间通过EventBus解耦。是的store这个模块非常易于测试。</p>
+<p>当然Flux的简单，易理解，易实现也是特点之一。以上都是个人的一切浅见，大家有时间也看看，有什么不同的见解多多交流。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/21/React-Native之Android开发/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          React-Native之Android开发
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/07/Data-Bindign到底有什么卵用？/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Data-Bindign到底有卵用？</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Flux框架之于Android应用" data-title="Flux框架之于Android应用" data-url="http://daguang.me/2015/09/07/Flux框架之于Android应用/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 大光
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+        </script>
+        <span id="busuanzi_container_site_pv">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
