@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.2.2"
+    "version": "3.8.0"
+  },
+  "scripts": {
+    "g": "./node_modules/hexo/bin/hexo g"
   },
   "dependencies": {
     "hexo": "^3.1.0",
