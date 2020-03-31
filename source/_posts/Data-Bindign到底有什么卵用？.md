@@ -1,4 +1,4 @@
-title: Data-Bindign到底有卵用？
+title: Data-Bindign到底有什么用？
 date: 2015-08-07 22:44:48
 tags: 
 	- Android
