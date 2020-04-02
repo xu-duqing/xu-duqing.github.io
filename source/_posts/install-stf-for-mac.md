@@ -102,6 +102,6 @@ pm2 save
 - 小米: 需要开启 USB 调试 (需要手机卡 , 并且登录小米账号才能设置)
 - 所以机型都需要给 STFServer.apk 所有权限
 
-
+![](/images/stf.jpg)
 
 
