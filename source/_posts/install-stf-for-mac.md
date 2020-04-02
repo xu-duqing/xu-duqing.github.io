@@ -94,7 +94,7 @@ pm2 save
 
 这个 BUG 我已经修复并合并进去了 https://github.com/openstf/stf/pull/1204 但是还没有发布新版本, 所以大家遇到还是要自己改一下
 
-查考这个改动就可以 https://github.com/openstf/stf/pull/1204/files/b078336dd2acb932c2e1e8d21fc9998199917746
+参考这个改动就可以: [Bugfix: chinese characters donot support](https://github.com/openstf/stf/pull/1204/files/b078336dd2acb932c2e1e8d21fc9998199917746)
 
 
 ### 一些机型容易掉线问题
@@ -103,5 +103,3 @@ pm2 save
 - 所以机型都需要给 STFServer.apk 所有权限
 
 ![](/images/stf.jpg)
-
-
