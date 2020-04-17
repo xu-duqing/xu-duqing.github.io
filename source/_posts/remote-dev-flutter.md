@@ -27,7 +27,7 @@ date: 2020-4-17 14:02:00
 
 我只想简单的做一个 Coder , 上次有这个想法的时候就被 RN 狠狠的打了脸: “不, 你不想” 
 
-直到我看到 [VS Remote Development] (https://code.visualstudio.com/docs/remote/remote-overview) 完美的契合了我的希望
+直到我看到 [VS Remote Development](https://code.visualstudio.com/docs/remote/remote-overview) 完美的契合了我的希望
 
 ### VS Remote Development
 - 开发环境收敛到一个系统中, 使用更加专业的机器
@@ -41,14 +41,35 @@ date: 2020-4-17 14:02:00
 - Remote- WSL :  windows 上用的,  没有用过
 
 ### 远程开发方案踩坑
-- Remote-Containers ❌ 
-    -  `VS Local -> Flutter Containers  -> USB Device`
-	- Docker for Mac VM 不支持设备映射
-- Remote-SSH ❌ :   
-    - `VS Local -> VS Server`
-	- 无法看到执行结果
-- Remote-SSH + STF  ✅ :
-    - `VS Local -> VS Server -> STF Server -> Local Browser`
+
+远程开发中核心的问题是如何进行结果验证和调试, H5 应用可以很方便的通过浏览器进行访问调试, 但是 Flutter 的结果需要在手机端或者虚拟机上才能看到就很尴尬了, 我验证了三种方式最终找到一个完美的解决方案
+
+#### Remote-Containers ❌ 
+问题: Docker for Mac VM 不支持设备映射
+
+```
++----------+     +--------------------+     +-------------+
+| VS Local | --> | Flutter Containers | --> | USB Devices |
++----------+     +--------------------+     +-------------+
+```
+#### Remote-SSH ❌
+问题: 无法看到执行结果, 无法进行结果的验证和调试
+
+```
++----------+     +-----------+
+| VS Local | --> | VS Server |
++----------+     +-----------+
+```
+
+### Remote-SSH + STF  ✅
+
+完美
+
+```
++----------+     +-----------+     +------------+     +---------------+
+| VS Local | --> | VS Server | --> | STF Server | --> | Local Browser |
++----------+     +-----------+     +------------+     +---------------+
+```
 
 ### 如何使用
 1. 部署服务器 (Flutter 开发环境 略)
@@ -77,4 +98,4 @@ Host development
 ### 参考资料
 - [设备农场](https://www.daguang.me/2020/04/01/install-stf-for-mac/)
 - [macOS install  - Flutter](https://flutter.dev/docs/get-started/install/macos)
-- [VS Remote Development] (https://code.visualstudio.com/docs/remote/remote-overview)
+- [VS Remote Development](https://code.visualstudio.com/docs/remote/remote-overview)
