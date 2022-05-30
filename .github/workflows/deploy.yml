@@ -1,4 +1,4 @@
-name: Serverless Devs Project CI/CD
+name: Serverless Devs Project CI/CD 
 
 on:
   push:
