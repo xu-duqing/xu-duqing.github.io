@@ -9,6 +9,7 @@
     "docs:dev": "vuepress dev src"
   },
   "devDependencies": {
+    "readable-stream": "^2.3.7",
     "tslib": "^2.4.0",
     "vuepress": "1.9.7",
     "vuepress-theme-hope": "1.29.0"
