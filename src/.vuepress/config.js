@@ -4,12 +4,12 @@ const hostname = process.env.HOSTNAME || 'https://www.daguang.me'
 
 module.exports = hope.config({
 	title: `Daguang's pages`,
-	description: '写代码这么好玩居然还给钱✨',
+	description: 'A Full-Stack Client Development✨',
 	base,
 	dest: './dist',
 	themeConfig: {
 		hostname,
-		author: 'xu.duqing',
+		author: 'daguang',
 		mdEnhance: {
 			enableAll: true,
 		},
