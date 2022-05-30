@@ -8,6 +8,12 @@
     "docs:clean-dev": "vuepress dev src --clean-cache",
     "docs:dev": "vuepress dev src"
   },
+  "dependencies": {
+    "@webserverless/fc-express": "^0.1.4",
+    "koa": "^2.13.0",
+    "koa-route": "^3.2.0",
+    "koa-static": "^5.0.0"
+  },
   "devDependencies": {
     "readable-stream": "^2.3.7",
     "tslib": "^2.4.0",
