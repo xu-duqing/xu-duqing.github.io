@@ -28,7 +28,7 @@ vars: # 全局变量
     description: 'daguang pages'
 
 services:
-  helloworld: # 业务名称/模块名称
+  daguang-pages: # 业务名称/模块名称
     # 如果只想针对 helloworld 下面的业务进行相关操作，可以在命令行中加上 helloworld，例如：
     # 只对helloworld进行构建：s helloworld build
     # 如果不带有 helloworld ，而是直接执行 s build，工具则会对当前Yaml下，所有和 helloworld 平级的业务模块（如有其他平级的模块，例如下面注释的next-function），按照一定顺序进行 build 操作

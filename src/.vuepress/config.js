@@ -1,6 +1,6 @@
 const hope = require('vuepress-theme-hope')
-const base = process.env.BASE || '/'
-const hostname = process.env.HOSTNAME || 'https://www.daguang.me'
+const base = '/'
+const hostname = 'https://www.daguang.me'
 
 module.exports = hope.config({
 	title: `Daguang's pages`,
